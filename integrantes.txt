@@ -1,0 +1,10 @@
+PROJETO: Painel Multimodal para Escola de Musica
+TURMA: 3ESPA
+
+INTEGRANTES:
+Maria Eduarda Ferrés - RM 560418
+Davi Corrêa Paião - RM 560438
+Gabriela Queiroga Cocuzza da Silva - RM 560035
+
+REPOSITORIO:
+https://github.com/escola-de-musica-3espa/painel-multimodal-escola-de-musica
