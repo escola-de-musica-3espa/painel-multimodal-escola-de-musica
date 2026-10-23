@@ -1,18 +1,16 @@
-"""Ponto de entrada do painel executado pelo PyScript.
-
-As funcionalidades de telemetria, guardrails e embeddings devem ser
-implementadas na feature branch designada para a tarefa.
+"""painel Multimodal - Escola de Música
+telemetria, guardrails e cálculo vetorial de embeddings (Norma Euclidiana com numpy)
 """
 
-from pyscript import display
+import json
+from datetime import datetime
 
+import numpy as np
+from pyscript import document
 
-def iniciar_painel() -> None:
-    """Confirma que a estrutura inicial foi carregada corretamente."""
-    display(
-        "Estrutura inicial pronta. Implemente telemetria, guardrails e embeddings.",
-        target="status",
-    )
+# ======== dados ========
+with open("dados.json", encoding="utf-8") as arquivo:
+    DADOS = json.load(arquivo)
 
+INSTRUMENTOS = DADOS["instrumentos"]
 
-iniciar_painel()
