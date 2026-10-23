@@ -1,72 +1,140 @@
+/* ===== Variáveis ===== */
 :root {
-    --cor-fundo: #10131a;
-    --cor-superficie: #1b2130;
-    --cor-destaque: #ff4f87;
-    --cor-texto: #f7f7fb;
-    --cor-texto-suave: #b8c0d4;
-    --raio: 16px;
-    --espaco: 1.25rem;
+    --cor-primaria: #6c2bd9;
+    --cor-secundaria: #f2b705;
+    --cor-fundo: #f5f3fa;
+    --cor-card: #ffffff;
+    --cor-texto: #222222;
+    --raio: 12px;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transicao: 0.25s ease;
 }
 
+/* ===== Base ===== */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    margin: 0;
-    color: var(--cor-texto);
+    font-family: "Segoe UI", Arial, sans-serif;
     background: var(--cor-fundo);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--cor-texto);
 }
 
+/* ===== Cabeçalho e rodapé ===== */
 .cabecalho,
-.painel,
-footer {
-    width: min(1100px, calc(100% - 2rem));
-    margin-inline: auto;
-}
-
-.cabecalho {
-    padding-block: 3rem 1.5rem;
-}
-
-.cabecalho h1 {
-    margin: 0;
-    font-size: clamp(2rem, 6vw, 4.5rem);
-}
-
-.etiqueta {
-    color: var(--cor-destaque);
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.painel,
-.grade {
-    display: grid;
-    gap: var(--espaco);
-}
-
-.painel {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.cartao {
-    min-height: 220px;
-    padding: 1.5rem;
-    border: 1px solid rgb(255 255 255 / 10%);
-    border-radius: var(--raio);
-    background: var(--cor-superficie);
-    box-shadow: 0 18px 50px rgb(0 0 0 / 24%);
-}
-
-.cartao p,
-footer {
-    color: var(--cor-texto-suave);
-}
-
-footer {
-    padding-block: 2rem;
+.rodape {
+    background: var(--cor-primaria);
+    color: #fff;
     text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+/* ===== Grid responsivo do painel ===== */
+.painel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--cor-card);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 1.25rem;
+    transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+}
+
+/* ===== Instrumentos ===== */
+.grid-instrumentos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1rem;
+}
+
+.card-largo {
+    grid-column: 1 / -1;
+}
+
+.instrumento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.instrumento img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: var(--raio);
+    background: var(--cor-fundo);
+    transition: transform var(--transicao);
+}
+
+.instrumento:hover img {
+    transform: scale(1.06);
+}
+
+.instrumento small {
+    color: #666;
+}
+
+#log-telemetria {
+    list-style: none;
+    font-family: monospace;
+    font-size: 0.85rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#log-telemetria li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ===== Formulários ===== */
+input,
+select,
+button {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 0.25rem 0;
+    width: 100%;
+}
+
+button {
+    background: var(--cor-secundaria);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: filter var(--transicao);
+}
+
+button:hover {
+    filter: brightness(0.9);
+}
+
+/* ===== Telas pequenas ===== */
+@media (max-width: 600px) {
+    .painel {
+        padding: 1rem;
+    }
 }
