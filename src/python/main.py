@@ -79,3 +79,33 @@ def calcular_distancia(event):
         f"Distância entre {a['nome']} e {b['nome']}: {dist:.4f}"
     )
     registrar(f"Embedding: {a['nome']} x {b['nome']} = {dist:.4f}")
+
+
+# ======== Renderização ========
+def renderizar_instrumentos():
+    lista = document.getElementById("lista-instrumentos")
+    lista.innerHTML = ""
+    for i in INSTRUMENTOS:
+        card = document.createElement("div")
+        card.className = "instrumento"
+        card.innerHTML = (
+            f'<img src="{i["imagem"]}" alt="{i["nome"]}">'
+            f"<strong>{i['nome']}</strong><small>{i['familia']}</small>"
+        )
+        lista.append(card)
+
+
+def preencher_selects():
+    for id_select in ("instrumento-a", "instrumento-b"):
+        select = document.getElementById(id_select)
+        for i in INSTRUMENTOS:
+            opcao = document.createElement("option")
+            opcao.value = str(i["id"])
+            opcao.textContent = i["nome"]
+            select.append(opcao)
+    document.getElementById("instrumento-b").selectedIndex = 1
+
+
+renderizar_instrumentos()
+preencher_selects()
+registrar(f"Painel carregado com {len(INSTRUMENTOS)} instrumentos.")
