@@ -14,3 +14,14 @@ with open("dados.json", encoding="utf-8") as arquivo:
 
 INSTRUMENTOS = DADOS["instrumentos"]
 
+# ======== telemetria ========
+
+def registrar(evento):
+    """registra um evento com horário no painel de telemetria."""
+
+    hora = datetime.now().strftime("%H:%M:%S")
+    item = document.createElement("li")
+    item.textContent = f"[{hora}] {evento}"
+    document.getElementById("log-telemetria").prepend(item)
+
+
