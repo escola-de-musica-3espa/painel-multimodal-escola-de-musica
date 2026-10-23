@@ -61,4 +61,21 @@ def buscar(event):
         saida.textContent = "Instrumento não encontrado."
     registrar(f"Busca: '{resultado}' ({len(encontrados)} resultado(s))")
 
-    
+# ======== embeddings ========
+
+def distancia_euclidiana(a, b):
+    """Norma Euclidiana da diferença entre dois vetores: ||a - b||."""
+    return float(np.linalg.norm(np.array(a) - np.array(b)))
+
+
+def calcular_distancia(event):
+    id_a = int(document.getElementById("instrumento-a").value)
+    id_b = int(document.getElementById("instrumento-b").value)
+    a = next(i for i in INSTRUMENTOS if i["id"] == id_a)
+    b = next(i for i in INSTRUMENTOS if i["id"] == id_b)
+
+    dist = distancia_euclidiana(a["embedding"], b["embedding"])
+    document.getElementById("resultado-embedding").textContent = (
+        f"Distância entre {a['nome']} e {b['nome']}: {dist:.4f}"
+    )
+    registrar(f"Embedding: {a['nome']} x {b['nome']} = {dist:.4f}")
